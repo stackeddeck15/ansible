@@ -2,14 +2,16 @@
 - hosts : all
   become : true
   tasks :
-    - name : install httpd
+    - name : install apache2
       package :
-        name : httpd
+        name : apache2
         state : present
+      when : ansible_distribution == "Ubuntu"
     - name : execute command 
       command : ip a
       
     - name : removing httpd
       package : 
         name : httpd
-        state : absent
+        state : present
+    
