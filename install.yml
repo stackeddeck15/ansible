@@ -1,0 +1,15 @@
+---
+- hosts : all
+  become : true
+  tasks :
+    - name : install httpd
+      package :
+        name : httpd
+        state : present
+    - name : execute command 
+      command : ip a
+      
+    - name : removing httpd
+      package : 
+        name : httpd
+        state : absent
