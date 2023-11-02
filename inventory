@@ -1,2 +1,9 @@
-43.204.234.128
-65.0.138.2
+[servers]
+server1 ansible_host=43.204.234.128
+server2 ansible_host=65.0.138.2
+
+[servers:vars]
+ansible_user=ec2-user
+ansible_ssh_private_key_file=ansible.pem
+
+
