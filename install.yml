@@ -1,17 +1,18 @@
 ---
 - hosts : all
-  become : true
-  tasks :
-    - name : install apache2
-      package :
-        name : apache2
-        state : present
-      when : ansible_distribution == "Ubuntu"
-    - name : execute command 
-      command : ip a
+  become : true 
+  tasks:
+    - name : installing httpd and php
+      tags : httpd 
+      package:
+        name : 
+          -  httpd
+          -  php
+    - name : update os 
+      tags : updateos
+      command : yum update -y
       
-    - name : removing httpd
-      package : 
-        name : httpd
-        state : present
-    
+    - name : remov httpd
+      tags : httpdremove
+      command : yum remove httpd -y
+      
